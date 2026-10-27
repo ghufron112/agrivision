@@ -1,0 +1,50 @@
+[
+  {
+    "class_id": 0,
+    "species_id": "1355868",
+    "scientific_name": "Moringa oleifera",
+    "common_name": "Kelor"
+  },
+  {
+    "class_id": 1,
+    "species_id": "1361545",
+    "scientific_name": "Hibiscus rosa-sinensis",
+    "common_name": "Kembang Sepatu"
+  },
+  {
+    "class_id": 2,
+    "species_id": "1363781",
+    "scientific_name": "Jasminum sambac",
+    "common_name": "Melati Putih"
+  },
+  {
+    "class_id": 3,
+    "species_id": "1367420",
+    "scientific_name": "Monstera deliciosa",
+    "common_name": "Monstera"
+  },
+  {
+    "class_id": 4,
+    "species_id": "1372109",
+    "scientific_name": "Phalaenopsis amabilis",
+    "common_name": "Anggrek Bulan"
+  },
+  {
+    "class_id": 5,
+    "species_id": "1378904",
+    "scientific_name": "Psidium guajava",
+    "common_name": "Jambu Biji"
+  },
+  {
+    "class_id": 6,
+    "species_id": "1380112",
+    "scientific_name": "Annona muricata",
+    "common_name": "Sirsak"
+  },
+  {
+    "class_id": 7,
+    "species_id": "1384501",
+    "scientific_name": "Carica papaya",
+    "common_name": "Pepaya"
+  }
+]

@@ -1,26 +1,28 @@
-import type { Plant } from '../types';
-import { mockPlants } from '../data/mockData';
+import { demoPlants } from '../data/demoPlants';
+import type { Plant } from '../types/plant';
 
-class PlantService {
-  public getAll(): Plant[] {
-    return mockPlants;
-  }
+export const plantService = {
+  getAllPlants: (): Plant[] => {
+    return demoPlants;
+  },
 
-  public getById(id: string): Plant | undefined {
-    return mockPlants.find(
-      (p) => p.id.toLowerCase() === id.toLowerCase() || p.name.toLowerCase() === id.toLowerCase()
+  getPlantBySlug: (slug: string): Plant | undefined => {
+    return demoPlants.find((p) => p.slug === slug || p.id === slug);
+  },
+
+  getPlantById: (id: string): Plant | undefined => {
+    return demoPlants.find((p) => p.id === id || p.slug === id);
+  },
+
+  searchPlants: (query: string): Plant[] => {
+    const q = query.toLowerCase().trim();
+    if (!q) return demoPlants;
+    return demoPlants.filter(
+      (p) =>
+        p.scientificName.toLowerCase().includes(q) ||
+        p.localName.toLowerCase().includes(q) ||
+        p.family.toLowerCase().includes(q) ||
+        p.genus.toLowerCase().includes(q)
     );
   }
-
-  public search(query: string, category?: string): Plant[] {
-    return mockPlants.filter((plant) => {
-      const matchQuery =
-        plant.name.toLowerCase().includes(query.toLowerCase()) ||
-        plant.scientificName.toLowerCase().includes(query.toLowerCase());
-      const matchCat = category && category !== 'Semua' ? plant.category === category : true;
-      return matchQuery && matchCat;
-    });
-  }
-}
-
-export const plantService = new PlantService();
+};

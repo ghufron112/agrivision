@@ -1,0 +1,18 @@
+Kategori,Metrik,Nilai,Keterangan
+Dataset,Nama,Pl@ntNet-300K v2,Zenodo Record 10419064
+Dataset,Total Citra,306093,Citra terverifikasi
+Dataset,Total Spesies,1081,Spesies botani terdaftar
+Split,Train,243916,79.7% dari dataset
+Split,Validation,31114,10.2% dari dataset
+Split,Test,31063,10.1% dari dataset (uji murni)
+Lisensi,CC-BY-SA,182400,"Komersial: True, ShareAlike: True"
+Lisensi,CC-BY-NC,76500,"Komersial: False, ShareAlike: False"
+Lisensi,CC-BY-NC-SA,47193,"Komersial: False, ShareAlike: True"
+Benchmark Spesies,1355868,Moringa oleifera Lam.,Kelor / Horseradish tree (Moringaceae)
+Benchmark Spesies,1361545,Hibiscus rosa-sinensis L.,Kembang Sepatu / China rose (Malvaceae)
+Benchmark Spesies,1363781,Jasminum sambac (L.) Aiton,Melati Putih / Arabian jasmine (Oleaceae)
+Benchmark Spesies,1367420,Monstera deliciosa Liebm.,Monstera / Swiss cheese plant (Araceae)
+Benchmark Spesies,1372109,Phalaenopsis amabilis (L.) Blume,Anggrek Bulan / Moon orchid (Orchidaceae)
+Benchmark Spesies,1378904,Psidium guajava L.,Jambu Biji / Guava (Myrtaceae)
+Benchmark Spesies,1380112,Annona muricata L.,Sirsak / Soursop (Annonaceae)
+Benchmark Spesies,1384501,Carica papaya L.,Pepaya / Papaya (Caricaceae)

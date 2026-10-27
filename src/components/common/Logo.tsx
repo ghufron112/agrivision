@@ -1,67 +1,38 @@
 import React from 'react';
 
 interface LogoProps {
-  theme?: 'light' | 'dark';
   size?: 'sm' | 'md' | 'lg';
-  showTagline?: boolean;
+  showSubtitle?: boolean;
 }
 
-export const Logo: React.FC<LogoProps> = ({
-  theme = 'light',
-  size = 'md',
-  showTagline = false,
-}) => {
-  const isDark = theme === 'dark';
-
-  const iconSizeClasses = {
-    sm: 'w-7 h-7',
-    md: 'w-9 h-9',
-    lg: 'w-12 h-12',
-  }[size];
-
-  const textSizeClasses = {
-    sm: 'text-lg',
-    md: 'text-xl',
-    lg: 'text-2xl',
-  }[size];
+export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false }) => {
+  const iconSize = size === 'sm' ? 'w-5 h-5' : size === 'lg' ? 'w-7 h-7' : 'w-6 h-6';
+  const textSize = size === 'sm' ? 'text-base' : size === 'lg' ? 'text-xl' : 'text-lg';
 
   return (
-    <div className="flex items-center gap-2.5 select-none">
-      <div
-        className={`${iconSizeClasses} rounded-xl flex items-center justify-center transition-transform hover:scale-105 ${
-          isDark
-            ? 'bg-[#008F63] text-white shadow-sm'
-            : 'bg-[#E8F7F1] text-[#008F63] border border-[#008F63]/20 shadow-xs'
-        }`}
-      >
+    <div className="flex items-center gap-2 select-none group">
+      <div className="w-8 h-8 rounded-lg bg-[#E5F5EE] flex items-center justify-center text-[#07865B] border border-[#B8E2D1] shrink-0 transition-transform group-hover:scale-105">
         <svg
           viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-5 h-5"
+          fill="currentColor"
+          className={iconSize}
         >
-          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+          {/* Stylized botanical leaf icon matching reference */}
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10A10 10 0 0 0 12 2zm1.2 14.5c-2.4 0-4.2-1.8-4.2-4.2 0-2.8 2.5-4.5 4.7-6.3.3.4.7.9 1 1.4-1.8 1.5-3.2 2.8-3.2 4.9 0 1.2.9 2.1 2.1 2.1 1.7 0 3-1.4 3-3.1 0-.3-.1-.6-.2-.9.8.2 1.4.9 1.4 1.7 0 2.4-2.1 4.4-4.6 4.4z" />
         </svg>
       </div>
       <div className="flex flex-col">
-        <span
-          className={`font-bold tracking-tight font-sans ${textSizeClasses} ${
-            isDark ? 'text-white' : 'text-[#17352E]'
-          }`}
-        >
-          AgriVision
-        </span>
-        {showTagline && (
-          <span
-            className={`text-xs font-medium tracking-wide ${
-              isDark ? 'text-white/70' : 'text-[#6B7C76]'
-            }`}
-          >
-            See. Identify. Understand.
+        <div className="flex items-baseline gap-1">
+          <span className={`font-bold tracking-tight text-[#172B36] font-sans ${textSize}`}>
+            PlantScan
+          </span>
+          <span className="text-[10px] font-semibold text-[#07865B] bg-[#E5F5EE] px-1.5 py-0.2 rounded">
+            AI
+          </span>
+        </div>
+        {showSubtitle && (
+          <span className="text-[10px] text-[#647985] tracking-tight">
+            Kenali Tanaman, Pahami Alam
           </span>
         )}
       </div>

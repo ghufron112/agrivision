@@ -1,0 +1,101 @@
+{
+  "dataset_name": "Pl@ntNet-300K v2",
+  "version": "2.0.0",
+  "zenodo_record": "10419064",
+  "zenodo_url": "https://zenodo.org/records/10419064",
+  "citation": "Garcin, C., Joly, A., Bonnet, P., Lombardo, J. C., Affouard, A., Chouet, M., ... & Lorieul, T. (2021). Pl@ntNet-300K: a plant identification benchmark dataset with a focus on long-tailed and fine-grained species identification. NeurIPS 2021 Datasets and Benchmarks Track.",
+  "total_images": 306093,
+  "total_species": 1081,
+  "splits": {
+    "train": {
+      "images": 243916,
+      "percentage": 79.7
+    },
+    "val": {
+      "images": 31114,
+      "percentage": 10.2
+    },
+    "test": {
+      "images": 31063,
+      "percentage": 10.1
+    }
+  },
+  "licenses": {
+    "CC-BY-SA": {
+      "description": "Creative Commons Attribution-ShareAlike",
+      "commercial_allowed": true,
+      "share_alike_required": true,
+      "image_count_approx": 182400
+    },
+    "CC-BY-NC": {
+      "description": "Creative Commons Attribution-NonCommercial",
+      "commercial_allowed": false,
+      "share_alike_required": false,
+      "image_count_approx": 76500
+    },
+    "CC-BY-NC-SA": {
+      "description": "Creative Commons Attribution-NonCommercial-ShareAlike",
+      "commercial_allowed": false,
+      "share_alike_required": true,
+      "image_count_approx": 47193
+    }
+  },
+  "sample_benchmark_species": [
+    {
+      "species_id": "1355868",
+      "scientific_name": "Moringa oleifera Lam.",
+      "common_name": "Kelor / Horseradish tree",
+      "family": "Moringaceae",
+      "genus": "Moringa"
+    },
+    {
+      "species_id": "1361545",
+      "scientific_name": "Hibiscus rosa-sinensis L.",
+      "common_name": "Kembang Sepatu / China rose",
+      "family": "Malvaceae",
+      "genus": "Hibiscus"
+    },
+    {
+      "species_id": "1363781",
+      "scientific_name": "Jasminum sambac (L.) Aiton",
+      "common_name": "Melati Putih / Arabian jasmine",
+      "family": "Oleaceae",
+      "genus": "Jasminum"
+    },
+    {
+      "species_id": "1367420",
+      "scientific_name": "Monstera deliciosa Liebm.",
+      "common_name": "Monstera / Swiss cheese plant",
+      "family": "Araceae",
+      "genus": "Monstera"
+    },
+    {
+      "species_id": "1372109",
+      "scientific_name": "Phalaenopsis amabilis (L.) Blume",
+      "common_name": "Anggrek Bulan / Moon orchid",
+      "family": "Orchidaceae",
+      "genus": "Phalaenopsis"
+    },
+    {
+      "species_id": "1378904",
+      "scientific_name": "Psidium guajava L.",
+      "common_name": "Jambu Biji / Guava",
+      "family": "Myrtaceae",
+      "genus": "Psidium"
+    },
+    {
+      "species_id": "1380112",
+      "scientific_name": "Annona muricata L.",
+      "common_name": "Sirsak / Soursop",
+      "family": "Annonaceae",
+      "genus": "Annona"
+    },
+    {
+      "species_id": "1384501",
+      "scientific_name": "Carica papaya L.",
+      "common_name": "Pepaya / Papaya",
+      "family": "Caricaceae",
+      "genus": "Carica"
+    }
+  ]
+}

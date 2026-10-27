@@ -1,52 +1,58 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ToastProvider } from './components/common/Toast';
 import { AppLayout } from './components/layout/AppLayout';
 
-// Pages
-import { LandingPage } from './pages/LandingPage';
-import { LoginPage } from './pages/LoginPage';
-import { RegisterPage } from './pages/RegisterPage';
-import { DashboardPage } from './pages/DashboardPage';
-import { AnalysisUploadPage } from './pages/AnalysisUploadPage';
-import { AnalysisProcessPage } from './pages/AnalysisProcessPage';
-import { AnalysisResultPage } from './pages/AnalysisResultPage';
-import { HistoryPage } from './pages/HistoryPage';
-import { PlantCatalogPage } from './pages/PlantCatalogPage';
+// 9 Dashboard Pages
+import { HomePage } from './pages/HomePage';
+import { IdentificationPage } from './pages/IdentificationPage';
+import { ResultsPage } from './pages/ResultsPage';
 import { PlantDetailPage } from './pages/PlantDetailPage';
-import { DiseaseCatalogPage } from './pages/DiseaseCatalogPage';
-import { DiseaseDetailPage } from './pages/DiseaseDetailPage';
-import { ProfilePage } from './pages/ProfilePage';
+import { DistributionPage } from './pages/DistributionPage';
+import { TaxonomyPage } from './pages/TaxonomyPage';
+import { HistoryPage } from './pages/HistoryPage';
+import { MethodComparisonPage } from './pages/MethodComparisonPage';
+import { AboutPage } from './pages/AboutPage';
 
 export const App: React.FC = () => {
   return (
-    <ToastProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* Public / Landing & Auth */}
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          {/* Halaman 1 — Beranda */}
+          <Route path="/" element={<HomePage />} />
 
-          {/* Authenticated Dashboard & Application Layout */}
-          <Route element={<AppLayout />}>
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/analisis" element={<AnalysisUploadPage />} />
-            <Route path="/analisis/proses" element={<AnalysisProcessPage />} />
-            <Route path="/analisis/:id" element={<AnalysisResultPage />} />
-            <Route path="/riwayat" element={<HistoryPage />} />
-            <Route path="/tanaman" element={<PlantCatalogPage />} />
-            <Route path="/tanaman/:id" element={<PlantDetailPage />} />
-            <Route path="/penyakit" element={<DiseaseCatalogPage />} />
-            <Route path="/penyakit/:id" element={<DiseaseDetailPage />} />
-            <Route path="/profil" element={<ProfilePage />} />
-          </Route>
+          {/* Halaman 2 — Identifikasi Tanaman (Upload Foto) */}
+          <Route path="/identifikasi" element={<IdentificationPage />} />
 
-          {/* Fallback */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
-    </ToastProvider>
+          {/* Halaman 3 — Hasil Identifikasi */}
+          <Route path="/hasil" element={<ResultsPage />} />
+
+          {/* Halaman 4 — Detail Tanaman */}
+          <Route path="/tanaman" element={<PlantDetailPage />} />
+          <Route path="/tanaman/:slug" element={<PlantDetailPage />} />
+
+          {/* Halaman 5 — Persebaran Geografis */}
+          <Route path="/persebaran" element={<DistributionPage />} />
+          <Route path="/persebaran/:slug" element={<DistributionPage />} />
+
+          {/* Halaman 6 — Taksonomi */}
+          <Route path="/taksonomi" element={<TaxonomyPage />} />
+          <Route path="/taksonomi/:slug" element={<TaxonomyPage />} />
+
+          {/* Halaman 7 — Riwayat Identifikasi */}
+          <Route path="/riwayat" element={<HistoryPage />} />
+
+          {/* Halaman 8 — Perbandingan Metode */}
+          <Route path="/perbandingan" element={<MethodComparisonPage />} />
+
+          {/* Halaman 9 — Tentang dan Panduan */}
+          <Route path="/tentang" element={<AboutPage />} />
+        </Route>
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

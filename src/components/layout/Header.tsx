@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Bell, ChevronDown, User as UserIcon, LogOut } from 'lucide-react';
-import { authService } from '../../services/authService';
-import { useNavigate } from 'react-router-dom';
+import { Menu, User, Sparkles, MapPin } from 'lucide-react';
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -9,92 +7,72 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onMenuToggle, title }) => {
-  const navigate = useNavigate();
-  const user = authService.getUser();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const handleLogout = () => {
-    authService.logout();
-    navigate('/login');
-  };
+  const [showProfileModal, setShowProfileModal] = useState(false);
 
   return (
-    <header className="sticky top-0 z-20 h-20 bg-[#F8FAF9]/80 backdrop-blur-md px-6 lg:px-8 flex items-center justify-between border-b border-[#E4ECE8]/60">
-      {/* Left side: Hamburger on mobile + page title breadcrumb */}
-      <div className="flex items-center gap-4">
+    <header className="h-14 bg-[#FFFFFF] border-b border-[#DCE8ED] px-4 lg:px-6 flex items-center justify-between sticky top-0 z-20">
+      <div className="flex items-center gap-3">
         <button
           onClick={onMenuToggle}
-          className="lg:hidden p-2 rounded-xl text-[#17352E] hover:bg-[#E8F7F1] transition-colors"
-          aria-label="Toggle Navigation"
+          aria-label="Buka Menu"
+          className="lg:hidden p-1.5 rounded-md text-[#647985] hover:text-[#172B36] hover:bg-[#F7FAFC] transition-colors"
         >
           <Menu className="w-5 h-5" />
         </button>
+
         {title && (
-          <h1 className="text-xl font-bold text-[#17352E] tracking-tight hidden sm:block">
+          <h1 className="text-sm font-semibold text-[#172B36] hidden sm:block">
             {title}
           </h1>
         )}
       </div>
 
-      {/* Right side: Notifications + User profile */}
-      <div className="flex items-center gap-4">
-        <button
-          className="relative p-2.5 rounded-full text-[#6B7C76] hover:text-[#17352E] hover:bg-white transition-colors border border-transparent hover:border-[#E4ECE8]"
-          title="Notifikasi"
-        >
-          <Bell className="w-4 h-4" />
-          <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#008F63] ring-2 ring-white"></span>
-        </button>
+      {/* Right controls: AI simulation status & Profile Avatar */}
+      <div className="flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E5F5EE] border border-[#B8E2D1] text-[11px] font-medium text-[#07865B]">
+          <Sparkles className="w-3 h-3 text-[#07865B]" />
+          <span>AI Vision Engine v2.4</span>
+        </div>
 
-        {/* User Card */}
         <div className="relative">
           <button
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-3 p-1.5 pl-2.5 rounded-2xl hover:bg-white border border-transparent hover:border-[#E4ECE8] transition-all cursor-pointer"
+            onClick={() => setShowProfileModal(!showProfileModal)}
+            title="Profil Pengguna"
+            aria-label="Profil Pengguna"
+            className="w-8 h-8 rounded-full bg-[#E5F5EE] border border-[#B8E2D1] flex items-center justify-center text-[#07865B] hover:bg-[#D5EFE4] transition-colors focus:outline-none focus:ring-2 focus:ring-[#07865B]/30"
           >
-            <div className="text-right hidden sm:block">
-              <div className="text-sm font-bold text-[#17352E] leading-tight">
-                {user.name}
-              </div>
-              <div className="text-xs font-medium text-[#6B7C76] leading-tight mt-0.5">
-                {user.role}
-              </div>
-            </div>
-            <img
-              src={user.avatar}
-              alt={user.name}
-              className="w-10 h-10 rounded-full object-cover ring-2 ring-[#008F63]/20"
-            />
-            <ChevronDown className="w-4 h-4 text-[#6B7C76]" />
+            <User className="w-4 h-4" />
           </button>
 
-          {/* User menu dropdown */}
-          {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-[#E4ECE8] py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-              <div className="px-4 py-2 border-b border-[#E4ECE8] sm:hidden">
-                <p className="text-sm font-bold text-[#17352E]">{user.name}</p>
-                <p className="text-xs text-[#6B7C76]">{user.role}</p>
+          {/* Quick Profile Dropdown Modal */}
+          {showProfileModal && (
+            <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-[#DCE8ED] p-4 text-xs z-30 animate-in fade-in duration-150">
+              <div className="flex items-center gap-3 pb-3 border-b border-[#DCE8ED]">
+                <div className="w-9 h-9 rounded-full bg-[#E5F5EE] text-[#07865B] flex items-center justify-center font-bold text-sm">
+                  PS
+                </div>
+                <div>
+                  <div className="font-semibold text-sm text-[#172B36]">Peneliti Botani</div>
+                  <div className="text-[#647985]">botani@plantscan.id</div>
+                </div>
               </div>
-              <button
-                onClick={() => {
-                  setDropdownOpen(false);
-                  navigate('/profil');
-                }}
-                className="w-full text-left px-4 py-2 text-sm text-[#17352E] hover:bg-[#F3FBF7] hover:text-[#008F63] flex items-center gap-2.5 font-medium"
-              >
-                <UserIcon className="w-4 h-4" />
-                Profil Saya
-              </button>
-              <button
-                onClick={() => {
-                  setDropdownOpen(false);
-                  handleLogout();
-                }}
-                className="w-full text-left px-4 py-2 text-sm text-[#EF4444] hover:bg-red-50 flex items-center gap-2.5 font-medium"
-              >
-                <LogOut className="w-4 h-4" />
-                Keluar
-              </button>
+              <div className="pt-3 space-y-1.5 text-[#647985]">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#07865B]" />
+                  <span>Regional: Indonesia (Jawa Timur)</span>
+                </div>
+                <div className="text-[11px] text-[#647985] pt-1">
+                  PlantScan Prototype v1.0 — Powered by Computer Vision & Geo Prior
+                </div>
+              </div>
+              <div className="mt-3 pt-2 border-t border-[#DCE8ED]">
+                <button
+                  onClick={() => setShowProfileModal(false)}
+                  className="w-full py-1 text-center font-medium text-[#07865B] hover:underline"
+                >
+                  Tutup
+                </button>
+              </div>
             </div>
           )}
         </div>

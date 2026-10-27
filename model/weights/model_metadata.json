@@ -1,0 +1,22 @@
+{
+  "model_architecture": "MobileNetV3_Small",
+  "num_classes": 8,
+  "input_resolution": [
+    224,
+    224
+  ],
+  "normalization": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "training_dataset": "Pl@ntNet-300K v2",
+  "final_val_acc": 92.3
+}
